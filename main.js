@@ -125,3 +125,39 @@
         }
     });
 })();
+
+
+/* ── ORIENTATION FORM HANDLING ─────────────────────────────── */
+(function () {
+    const orientationForm = document.getElementById('orientation-form');
+    const orientationSuccess = document.getElementById('orientation-success');
+    if (!orientationForm) return;
+
+    orientationForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = orientationForm.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.textContent = '...';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch(orientationForm.action, {
+                method:  'POST',
+                body:    new FormData(orientationForm),
+                headers: { 'Accept': 'application/json' },
+            });
+
+            if (res.ok) {
+                orientationForm.style.display    = 'none';
+                orientationSuccess.style.display = 'block';
+            } else {
+                throw new Error('server error');
+            }
+        } catch {
+            btn.textContent = original;
+            btn.disabled    = false;
+            alert('Произошла ошибка при отправке. Попробуйте ещё раз.');
+        }
+    });
+})();

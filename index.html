@@ -175,7 +175,53 @@
     </section>
 
     <!-- ══════════════════════════════════════
-         СЕКЦИЯ 7: ФИНАЛЬНЫЙ ЭКРАН
+         СЕКЦИЯ 7: ЕСЛИ У ВАС НЕТ РЕКОМЕНДАЦИИ
+    ══════════════════════════════════════ -->
+    <section class="section" id="no-recommendation">
+        <div class="container">
+            <div class="fade-in">
+                <div class="section-label">Если у вас нет рекомендации</div>
+                <div class="prose form-intro">
+                    <p>Не каждый приходит через прямую рекомендацию.</p>
+                    <p class="stmt-pair">В отдельных случаях возможно первичное взаимодействие,<br>позволяющее определить готовность и способ дальнейшего допуска.</p>
+                    <p>Это не альтернатива рекомендации.<br>Это предварительная ориентация в процессе.</p>
+                    <p>Опишите текущую фазу, уровень ответственности и причину запроса.</p>
+                    <p class="stmt-key">Если это пространство для вас — вы получите ответ.</p>
+                    <p class="orientation-note">Рекомендации формируются через уже существующие взаимодействия.</p>
+                </div>
+
+                <form id="orientation-form" action="https://formspree.io/f/mlgwkkbw" method="POST">
+                    <input type="hidden" name="_subject" value="Запрос на ориентацию (без рекомендации)">
+                    <div class="field">
+                        <label for="or-name">Имя</label>
+                        <input type="text" id="or-name" name="name" required autocomplete="off" placeholder="Ваше имя">
+                    </div>
+                    <div class="field">
+                        <label for="or-contact">Контакт</label>
+                        <input type="text" id="or-contact" name="contact" required autocomplete="off" placeholder="Telegram, email или телефон">
+                    </div>
+                    <div class="field">
+                        <label for="or-scope">Текущая сфера / масштаб ответственности</label>
+                        <input type="text" id="or-scope" name="scope" required autocomplete="off" placeholder="Чем вы занимаетесь, за что несёте ответственность">
+                    </div>
+                    <div class="field">
+                        <label for="or-situation">Краткое описание ситуации</label>
+                        <textarea id="or-situation" name="situation" rows="4" required placeholder="Что привело вас сюда. Что происходит в вашей жизни прямо сейчас."></textarea>
+                    </div>
+                    <div class="field-submit">
+                        <button type="submit" class="btn-orientation">Отправить запрос →</button>
+                    </div>
+                </form>
+
+                <div id="orientation-success" class="form-success" style="display:none;">
+                    <p>Запрос получен.<br>Если это пространство для вас — ответ придёт.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         СЕКЦИЯ 8: ФИНАЛЬНЫЙ ЭКРАН
     ══════════════════════════════════════ -->
     <section id="final">
         <div class="final-inner fade-in">
