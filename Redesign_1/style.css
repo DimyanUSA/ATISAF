@@ -647,3 +647,54 @@ button.btn-cta {
     letter-spacing: 0.04em;
     margin-bottom: 32px;
 }
+
+/* ══════════════════════════════════════════════
+   UX MESSAGE (behavioural triggers)
+══════════════════════════════════════════════ */
+.ux-message {
+    position: fixed;
+    bottom: 36px;
+    left: 36px;
+    max-width: 300px;
+    background: rgba(8,8,10,0.92);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 18px 22px;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.78em;
+    line-height: 1.75;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 200;
+    pointer-events: auto;
+}
+
+.ux-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ux-message p { margin: 0 0 8px; }
+
+.ux-message a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    font-size: 0.9em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 1px;
+    transition: color 0.3s;
+}
+
+.ux-message a:hover { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 640px) {
+    .ux-message {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+        bottom: 20px;
+    }
+}

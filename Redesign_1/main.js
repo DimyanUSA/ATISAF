@@ -186,3 +186,87 @@
         });
     }
 })();
+
+
+// ── Behavioural UX Logic ──────────────────────────
+(function() {
+  const isRU = () => (localStorage.getItem('atisaf-lang') || 'en') === 'ru';
+
+  const messages = {
+    en: {
+      deeper: "If you've reached this layer, you already understand more than most.",
+      time60: "Not everything here is meant to be understood immediately.",
+      time90: "At this point, most already know whether they are ready.",
+      scroll: "If you are still here — the decision has already been made."
+    },
+    ru: {
+      deeper: "Если вы дошли до этого уровня — вы уже понимаете больше, чем большинство.",
+      time60: "Не всё здесь предназначено для немедленного понимания.",
+      time90: "В этой точке большинство уже знают — готовы они или нет.",
+      scroll: "Если вы всё ещё здесь — решение уже принято."
+    }
+  };
+
+  let startTime = Date.now();
+  let openedDeeper = false;
+  let messageShown = false;
+  let scrollMessageShown = false;
+
+  function showUXMessage(text, withCTA) {
+    if (document.querySelector('.ux-message')) return;
+    const lang = isRU() ? 'ru' : 'en';
+    const box = document.createElement('div');
+    box.className = 'ux-message';
+    box.innerHTML = `<p>${text}</p>${withCTA ? `<a href="#recommendation">${lang === 'ru' ? '→ Запросить допуск' : '→ Request access'}</a>` : ''}`;
+    document.body.appendChild(box);
+    setTimeout(() => box.classList.add('visible'), 100);
+    setTimeout(() => {
+      box.classList.remove('visible');
+      setTimeout(() => box.remove(), 600);
+    }, 6000);
+  }
+
+  // Deeper layer trigger
+  const deeperBtn = document.querySelector('.orientation-deeper-toggle');
+  if (deeperBtn) {
+    deeperBtn.addEventListener('click', () => {
+      openedDeeper = true;
+      const lang = isRU() ? 'ru' : 'en';
+      setTimeout(() => showUXMessage(messages[lang].deeper, true), 2000);
+    });
+  }
+
+  // Time-based triggers
+  const timeCheck = setInterval(() => {
+    if (messageShown) { clearInterval(timeCheck); return; }
+    const elapsed = (Date.now() - startTime) / 1000;
+    const lang = isRU() ? 'ru' : 'en';
+    if (elapsed > 90 && !openedDeeper) {
+      showUXMessage(messages[lang].time90, false);
+      messageShown = true;
+    } else if (elapsed > 60 && !openedDeeper) {
+      showUXMessage(messages[lang].time60, false);
+      messageShown = true;
+    }
+  }, 5000);
+
+  // Scroll to bottom trigger
+  window.addEventListener('scroll', () => {
+    if (scrollMessageShown) return;
+    const scrolled = window.innerHeight + window.scrollY;
+    const total = document.body.offsetHeight;
+    if (scrolled >= total - 150) {
+      scrollMessageShown = true;
+      const lang = isRU() ? 'ru' : 'en';
+      setTimeout(() => showUXMessage(messages[lang].scroll, true), 500);
+    }
+  });
+
+  // Return visitor
+  if (localStorage.getItem('atisaf-visited')) {
+    const lang = isRU() ? 'ru' : 'en';
+    const returnMsg = lang === 'ru' ? 'Вы уже были здесь.' : 'You have been here before.';
+    setTimeout(() => showUXMessage(returnMsg, false), 3000);
+  }
+  localStorage.setItem('atisaf-visited', 'true');
+})();
