@@ -1,6 +1,6 @@
 const translations = {
   en: {
-    pageTitle: "Quantum Field Mentorship | Akashic Field & Consciousness Work",
+    pageTitle: "Quantum Field Mentorship | Akashic Records & Consciousness Work",
     metaDesc: "Mentorship in working with the quantum field and Akashic field. A private space for those ready for irreversible shifts in perception, decision-making, and life direction.",
     ogTitle: "Mentorship in the Quantum Field",
     ogDesc: "A private space for working with perception, decision-making, and the deeper structure of reality.",
