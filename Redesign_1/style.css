@@ -1,0 +1,513 @@
+/* ============================================================
+   АТИСАФ — style.css
+   Дизайн-концепция «Поле» | Тёмный минимализм
+   ============================================================ */
+
+:root {
+    --bg:        #0A0906;
+    --bg-alt:    #0F0D0B;
+    --text:      #F0EAE0;
+    --accent:    #A08B5A;
+    --muted:     rgba(240, 234, 224, 0.4);
+    --line:      #2A2520;
+    --serif:     'Cormorant Garant', Georgia, serif;
+    --sans:      'Inter', system-ui, sans-serif;
+}
+
+/* ── RESET ─────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── SCROLLBAR ──────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line); }
+
+/* ── LAYOUT ─────────────────────────────────── */
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+.section-alt {
+    background-color: var(--bg-alt);
+}
+
+/* ── SECTION LABEL ──────────────────────────── */
+.section-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 56px;
+}
+
+/* ── PROSE TEXT ─────────────────────────────── */
+.prose p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.95;
+    color: var(--text);
+    opacity: 0.78;
+    margin-bottom: 32px;
+}
+
+.prose p:last-child {
+    margin-bottom: 0;
+}
+
+/* Contrast pairs: "Это не X. / Это Y." */
+.stmt-pair {
+    opacity: 0.9 !important;
+}
+
+/* Triple rhythm in italics */
+.stmt-triple {
+    font-family: var(--serif) !important;
+    font-style: italic !important;
+    font-size: 21px !important;
+    line-height: 1.75 !important;
+    opacity: 1 !important;
+    color: var(--text) !important;
+    letter-spacing: 0.01em;
+}
+
+/* Key declarations */
+.stmt-key {
+    font-family: var(--serif) !important;
+    font-style: italic !important;
+    font-size: 19px !important;
+    line-height: 1.7 !important;
+    opacity: 1 !important;
+    color: var(--text) !important;
+    letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+#hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+#particles-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    padding: 80px 40px;
+}
+
+.hero-brand {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(54px, 13vw, 112px);
+    letter-spacing: 0.42em;
+    color: var(--text);
+    margin-bottom: 36px;
+    line-height: 1;
+}
+
+.hero-tagline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(11px, 1.6vw, 14px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 68px;
+}
+
+.hero-body {
+    margin-bottom: 72px;
+}
+
+.hero-body p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: 18px;
+    line-height: 1.9;
+}
+
+.hero-key {
+    font-family: var(--serif) !important;
+    font-style: italic !important;
+    font-size: 22px !important;
+    opacity: 1 !important;
+    margin-top: 44px !important;
+    color: var(--text) !important;
+    letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════════════
+   CTA BUTTON
+══════════════════════════════════════════════ */
+.btn-cta {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(160, 139, 90, 0.45);
+    transition: border-color 0.5s ease;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+
+.btn-cta:hover {
+    border-bottom-color: var(--accent);
+}
+
+button.btn-cta {
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+/* ══════════════════════════════════════════════
+   FORMATS
+══════════════════════════════════════════════ */
+.formats-list {
+    margin-bottom: 48px;
+}
+
+.format-item {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.format-item:first-child {
+    border-top: 1px solid var(--line);
+}
+
+.format-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.format-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text);
+    opacity: 0.6;
+}
+
+.formats-note {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    opacity: 0.85;
+}
+
+/* ══════════════════════════════════════════════
+   FORM
+══════════════════════════════════════════════ */
+.form-intro {
+    margin-bottom: 56px;
+}
+
+#access-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field label {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.field input,
+.field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    padding: 14px 0;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.35s ease;
+    caret-color: var(--accent);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-bottom-color: var(--accent);
+}
+
+.field textarea {
+    resize: none;
+    line-height: 1.75;
+    min-height: 80px;
+}
+
+.field-submit {
+    padding-top: 8px;
+}
+
+.form-success {
+    margin-top: 56px;
+    padding-top: 56px;
+    border-top: 1px solid var(--line);
+}
+
+.form-success p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.7;
+    color: var(--text);
+    opacity: 0.75;
+}
+
+/* ══════════════════════════════════════════════
+   FINAL SECTION
+══════════════════════════════════════════════ */
+#final {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px;
+}
+
+.final-inner {
+    max-width: 560px;
+}
+
+.final-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(34px, 6vw, 60px);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 44px;
+    line-height: 1.15;
+}
+
+.final-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    opacity: 0.65;
+    line-height: 1.9;
+    margin-bottom: 44px;
+}
+
+.final-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--text);
+    opacity: 0.55;
+    line-height: 1.75;
+    margin-bottom: 60px;
+}
+
+/* ══════════════════════════════════════════════
+   FADE-IN ANIMATION
+══════════════════════════════════════════════ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.delay-1 { transition-delay: 0.25s; }
+.fade-in.delay-2 { transition-delay: 0.5s; }
+.fade-in.delay-3 { transition-delay: 0.75s; }
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+/* ── Блок ориентации (без рекомендации) ── */
+#no-recommendation {
+    opacity: 0.9;
+}
+
+.orientation-note {
+    font-size: 0.82em;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2em;
+    font-style: italic;
+}
+
+.btn-orientation {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.55);
+    font-family: inherit;
+    font-size: 0.78em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3em 0;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.btn-orientation:hover {
+    color: rgba(255,255,255,0.85);
+    border-color: rgba(255,255,255,0.6);
+}
+
+#orientation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 80px 0;
+    }
+    .container {
+        padding: 0 24px;
+    }
+    #final {
+        padding: 80px 24px;
+    }
+    .hero-inner {
+        padding: 80px 24px;
+    }
+    .hero-brand {
+        letter-spacing: 0.28em;
+    }
+    .stmt-triple {
+        font-size: 18px !important;
+    }
+    .stmt-key {
+        font-size: 17px !important;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   LANGUAGE SWITCHER
+══════════════════════════════════════════════ */
+.lang-switcher {
+    position: fixed;
+    top: 28px;
+    right: 36px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.3);
+    font-family: inherit;
+    font-size: 0.7em;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+}
+.lang-btn:hover { color: rgba(255,255,255,0.7); }
+.lang-btn.active { color: rgba(255,255,255,0.75); }
+.lang-sep { color: rgba(255,255,255,0.15); font-size: 0.7em; }
+
+/* ══════════════════════════════════════════════
+   DEPTH SECTION NARROW
+══════════════════════════════════════════════ */
+#depth .container { max-width: 600px; margin: 0 auto; }
+
+/* ══════════════════════════════════════════════
+   FINAL EXTRA
+══════════════════════════════════════════════ */
+.final-extra {
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.3);
+    margin-top: 1.5em;
+    font-style: italic;
+}
+
+/* ══════════════════════════════════════════════
+   AUTHORITY SIGNAL
+══════════════════════════════════════════════ */
+.authority-signal {
+    text-align: center;
+    padding: 40px 24px 60px;
+    opacity: 0.18;
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+    line-height: 2;
+}
