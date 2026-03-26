@@ -456,3 +456,245 @@ button.btn-cta {
         font-size: 17px !important;
     }
 }
+
+/* ══════════════════════════════════════════════
+   LANGUAGE SWITCHER
+══════════════════════════════════════════════ */
+.lang-switcher {
+    position: fixed;
+    top: 28px;
+    right: 36px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.3);
+    font-family: inherit;
+    font-size: 0.7em;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+}
+.lang-btn:hover { color: rgba(255,255,255,0.7); }
+.lang-btn.active { color: rgba(255,255,255,0.75); }
+.lang-sep { color: rgba(255,255,255,0.15); font-size: 0.7em; }
+
+/* ══════════════════════════════════════════════
+   DEPTH SECTION NARROW
+══════════════════════════════════════════════ */
+#depth .container { max-width: 600px; margin: 0 auto; }
+
+/* ══════════════════════════════════════════════
+   FINAL EXTRA
+══════════════════════════════════════════════ */
+.final-extra {
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.3);
+    margin-top: 1.5em;
+    font-style: italic;
+}
+
+/* ══════════════════════════════════════════════
+   AUTHORITY SIGNAL
+══════════════════════════════════════════════ */
+.authority-signal {
+    text-align: center;
+    padding: 40px 24px 60px;
+    opacity: 0.18;
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+    line-height: 2;
+}
+
+/* ══════════════════════════════════════════════
+   ORIENTATION BLOCK
+══════════════════════════════════════════════ */
+.orientation-section { padding: 60px 0; }
+
+.orientation-toggle,
+.orientation-deeper-toggle {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.3);
+    font-family: inherit;
+    font-size: 0.72em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    display: block;
+    transition: color 0.3s;
+}
+
+.orientation-toggle:hover,
+.orientation-deeper-toggle:hover {
+    color: rgba(255,255,255,0.6);
+}
+
+.orientation-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.7s ease, opacity 0.5s ease;
+}
+
+.orientation-block.open .orientation-content {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+.orientation-text p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.92em;
+    line-height: 2;
+    margin: 20px 0;
+    letter-spacing: 0.02em;
+}
+
+.orientation-deeper-toggle {
+    margin-top: 32px;
+    margin-bottom: 0;
+    color: rgba(255,255,255,0.2);
+}
+
+.orientation-deeper {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.8s ease, opacity 0.6s ease;
+    margin-top: 0;
+}
+
+.orientation-deeper.open {
+    max-height: 2000px;
+    opacity: 1;
+    margin-top: 32px;
+}
+
+.orientation-deeper p {
+    color: rgba(168,168,179,0.7);
+    font-size: 0.86em;
+    line-height: 2.1;
+    margin: 18px 0;
+    letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════════
+   MICRO-BRIDGES & SILENT CTAs
+══════════════════════════════════════════════ */
+.section-bridge {
+    text-align: center;
+    padding: 20px 24px 0;
+}
+
+.section-bridge p {
+    color: rgba(255,255,255,0.22);
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.silent-cta {
+    text-align: center;
+    padding: 40px 0 0;
+}
+
+.silent-cta a,
+.deeper-cta a {
+    color: rgba(255,255,255,0.2);
+    text-decoration: none;
+    font-size: 0.72em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.silent-cta a:hover,
+.deeper-cta a:hover {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.deeper-cta {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.deeper-cta p {
+    color: rgba(255,255,255,0.25);
+    font-size: 0.82em;
+    font-style: italic;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+    line-height: 1.8;
+}
+
+.final-signal {
+    color: rgba(255,255,255,0.25);
+    font-size: 0.82em;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+}
+
+/* ══════════════════════════════════════════════
+   UX MESSAGE (behavioural triggers)
+══════════════════════════════════════════════ */
+.ux-message {
+    position: fixed;
+    bottom: 36px;
+    left: 36px;
+    max-width: 300px;
+    background: rgba(8,8,10,0.92);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 18px 22px;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.78em;
+    line-height: 1.75;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 200;
+    pointer-events: auto;
+}
+
+.ux-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ux-message p { margin: 0 0 8px; }
+
+.ux-message a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    font-size: 0.9em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 1px;
+    transition: color 0.3s;
+}
+
+.ux-message a:hover { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 640px) {
+    .ux-message {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+        bottom: 20px;
+    }
+}

@@ -1,13 +1,46 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Наставничество в работе с квантовым полем и полем Акаши. Квантовое сознание, трансформация личности, стратегическое наставничество. Вход по рекомендации.">
-    <meta name="keywords" content="квантовое поле, поле Акаши, духовное наставничество, квантовое сознание, трансформация личности, работа с квантовой информацией">
-    <meta property="og:title" content="Атисаф — Работа с квантовым полем">
-    <meta property="og:description" content="Наставничество во взаимодействии с квантовым полем. Доступ к информации, которая меняет траекторию жизни. Вход по рекомендации.">
-    <title>Атисаф — Работа с квантовым полем. Наставничество.</title>
+    <meta name="description" content="Mentorship in working with the quantum field and Akashic field. A private space for those ready for irreversible shifts in perception, decision-making, and life direction.">
+    <meta name="keywords" content="quantum field mentorship, Akashic field, consciousness transformation, decision-making, perception, leadership">
+    <meta property="og:title" content="Mentorship in the Quantum Field">
+    <meta property="og:description" content="A private space for working with perception, decision-making, and the deeper structure of reality.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://atisaf.com/">
+    <meta property="og:image" content="og-image-en.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="og-image-en.png">
+    <title>Quantum Field Mentorship | Akashic Records &amp; Consciousness Work</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Atisaf",
+      "description": "Mentorship in the quantum field and Akashic field, focused on consciousness transformation, perception, and decision-making.",
+      "url": "https://atisaf.com/",
+      "knowsAbout": ["Quantum Field","Akashic Records","Consciousness Transformation","Decision-Making","Perception","Leadership Development"],
+      "offers": {
+        "@type": "Service",
+        "name": "Quantum Field Mentorship",
+        "description": "Private mentorship for individuals working with perception, decision-making, and the deeper structure of reality."
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Quantum Field Mentorship",
+      "provider": { "@type": "Person", "name": "Atisaf" },
+      "areaServed": "Global",
+      "serviceType": "Private Mentorship",
+      "description": "Mentorship in the quantum field and Akashic field, focused on consciousness, perception, and strategic decision-making."
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
@@ -15,20 +48,29 @@
 </head>
 <body>
 
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en" onclick="applyLang('en')">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="ru" onclick="applyLang('ru')">RU</button>
+    </div>
+
     <!-- ══════════════════════════════════════
          СЕКЦИЯ 0: HERO
     ══════════════════════════════════════ -->
     <section id="hero">
         <canvas id="particles-canvas"></canvas>
         <div class="hero-inner">
-            <div class="hero-brand fade-in">АТИСАФ</div>
-            <div class="hero-tagline fade-in delay-1">Работа с квантовым полем. Наставничество.</div>
+            <div class="hero-brand fade-in" data-i18n="heroBrand">ATISAF</div>
+            <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">
+              Mentorship in the Quantum Field, Akashic Records, and Consciousness Transformation
+            </h1>
+            <div class="hero-tagline fade-in delay-1" data-i18n="heroTagline">Mentorship in working with the quantum field, the Akashic field, and processes of consciousness transformation.</div>
             <div class="hero-body fade-in delay-2">
-                <p>Это не помощь и не сопровождение.</p>
-                <p>Это доступ к информации квантового поля и поля Акаши,<br>которая меняет траекторию жизни.</p>
-                <p class="hero-key">Знание необратимо.</p>
+                <p data-i18n="heroBody1">This is not therapy.<br>And not a conventional path of personal development.</p>
+                <p data-i18n="heroBody2">It is a guided interaction with a field that reshapes perception, decision-making, and the scale of your presence in the world.</p>
+                <p class="hero-key" data-i18n="heroKey">The knowledge accessed here is <em>not reversible</em>.</p>
             </div>
-            <a href="#recommendation" class="btn-cta fade-in delay-3">Запросить допуск →</a>
+            <a href="#recommendation" class="btn-cta fade-in delay-3" data-i18n="heroCta">Request access →</a>
         </div>
     </section>
 
@@ -38,18 +80,64 @@
     <section class="section" id="what">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Что здесь происходит</div>
+                <h2 class="section-label" data-i18n="label1">What Happens Here</h2>
                 <div class="prose">
-                    <p>Это наставничество во взаимодействии с квантовым полем — уровнем реальности, где формируются причины событий, а не их последствия.</p>
-                    <p>Через работу с полем Акаши происходит считывание и перевод информации, выходящей за пределы линейного времени. Открывается доступ к вероятным вариантам развёртывания и точкам стратегического выбора.</p>
-                    <p class="stmt-pair">Это не психологическая поддержка и не духовная практика «для гармонии».<br>Это работа с глубинной структурой создаваемой реальности.</p>
-                    <p>В процессе трансформируется восприятие времени, ответственности и собственного масштаба. Скрытое становится явным. Разделение на прошлое, настоящее и будущее уступает месту моменту — источнику создания.</p>
-                    <p class="stmt-key">Эта работа не даёт утешения.<br>Она возвращает человека к роли со-творца.</p>
-                    <p class="stmt-key">Это не услуга.<br>Это допуск к знанию, которое требует зрелости.</p>
+                    <p data-i18n="s1p1">This is mentorship in working with the quantum field — a layer of reality where causes emerge before outcomes appear.</p>
+                    <p data-i18n="s1p2">Through engagement with the Akashic field, information beyond linear time can be accessed and interpreted.</p>
+                    <p data-i18n="s1p3">This reveals potential trajectories of development and moments of precise strategic choice.</p>
+                    <p class="stmt-pair" data-i18n="s1p4">This is not psychological support and not a practice for balance or comfort.</p>
+                    <p data-i18n="s1p5">It is work with the deeper structure of reality itself.</p>
+                    <p data-i18n="s1p6">In the process, perception of time, responsibility, and personal scale begins to shift.</p>
+                    <p data-i18n="s1p7">What was unseen becomes visible.<br>The division between past, present, and future gives way to the present moment as a point of creation.</p>
+                    <p data-i18n="s1practice">This work is applied in real-time decision environments, where timing and precision determine outcomes.</p>
+                    <p class="stmt-key" data-i18n="s1key1">This work does not aim to reassure.<br>It repositions the individual as an active participant in creation.</p>
+                    <p class="stmt-key" data-i18n="s1key2">Access is not a service.<br>It is an entry into knowledge that requires readiness.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ══════════════════════════════════════
+         ОРИЕНТАЦИЯ (раскрывающийся блок)
+    ══════════════════════════════════════ -->
+    <section class="section orientation-section" id="orientation">
+      <div class="container">
+        <div class="orientation-block fade-in">
+
+          <button class="orientation-toggle" data-i18n="orientToggle">Orientation (optional)</button>
+
+          <div class="orientation-content">
+
+            <div class="orientation-text">
+              <p data-i18n="orient1"></p>
+              <p data-i18n="orient2"></p>
+              <p data-i18n="orient3"></p>
+              <p data-i18n="orient4"></p>
+            </div>
+
+            <button class="orientation-deeper-toggle" data-i18n="orientDeeperBtn">Deeper layer →</button>
+
+            <div class="orientation-deeper">
+              <p data-i18n="deeper1"></p>
+              <p data-i18n="deeper2"></p>
+              <p data-i18n="deeper3"></p>
+              <p data-i18n="deeper4"></p>
+              <p data-i18n="deeper5"></p>
+              <p data-i18n="deeper6"></p>
+              <div class="deeper-cta">
+                <p data-i18n="deeperCta"></p>
+                <a href="#recommendation" data-i18n="silentCta"></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-bridge fade-in">
+      <p data-i18n="bridgeForWhom"></p>
+    </div>
 
     <!-- ══════════════════════════════════════
          СЕКЦИЯ 2: ДЛЯ КОГО
@@ -57,15 +145,19 @@
     <section class="section section-alt" id="for-whom">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Для кого</div>
+                <h2 class="section-label" data-i18n="label2">Who This Is For</h2>
                 <div class="prose">
-                    <p class="stmt-pair">Это пространство не для ищущих утешение.<br>И не для тех, кто собирает впечатления.</p>
-                    <p>Это для тех, кто уже несёт ответственность — за решения, от которых зависят люди, структуры и процессы.</p>
-                    <p>Для предпринимателей, лидеров и создателей систем, чьи действия формируют среду, а не адаптируются к ней.</p>
-                    <p>Для людей в фазе перехода — когда прежний уровень понимания больше не соответствует масштабу задач.</p>
-                    <p class="stmt-pair">Здесь не работают из любопытства.<br>Здесь не ищут поддержки и не ждут разрешения.</p>
-                    <p>Этот человек уже силён. Он приходит не чтобы стать сильным — он приходит чтобы увидеть то, что прежняя конфигурация ещё не позволяет понять. Чтобы принять ответственность за знание, которое меняет всё вокруг.</p>
-                    <p class="stmt-key">Если вы ищете поддержку — это не сюда.<br>Если вы готовы к необратимости — можете подать запрос.</p>
+                    <p class="stmt-pair" data-i18n="s2p1">This space is not for those seeking comfort.<br>And not for those collecting experiences.</p>
+                    <p data-i18n="s2p2">It is for individuals who already carry responsibility — for decisions that influence people, systems, and outcomes.</p>
+                    <p data-i18n="s2p3">For entrepreneurs, leaders, and system-builders whose actions shape environments rather than adapt to them.</p>
+                    <p data-i18n="s2stakes">Often operating in environments where decisions carry non-linear consequences.</p>
+                    <p data-i18n="s2p4">For those in a transition phase — when previous ways of understanding no longer match the scale of what is unfolding.</p>
+                    <p class="stmt-pair" data-i18n="s2p5">This is not a place for curiosity alone.<br>Not a place to seek support or permission.</p>
+                    <p data-i18n="s2p6">The person who comes here is already strong. They do not come to become stronger — but to access what lies beyond their current perception.</p>
+                    <p class="stmt-key" data-i18n="s2key">If you are looking for support, this is not the place.<br>If you are open to irreversible change, you may request access.</p>
+                </div>
+                <div class="silent-cta fade-in">
+                  <a href="#recommendation" data-i18n="silentCta"></a>
                 </div>
             </div>
         </div>
@@ -77,17 +169,22 @@
     <section class="section" id="depth">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Глубина знания</div>
+                <h2 class="section-label" data-i18n="label3">Depth of Knowledge</h2>
                 <div class="prose">
-                    <p>Информация, полученная в работе с квантовым полем, не вписывается в прежнюю картину мира. Она разрушает её.</p>
-                    <p class="stmt-triple">Время начинает течь иначе.<br>Люди и ситуации считываются иначе.<br>Решения принимаются иначе.</p>
-                    <p>Окружение меняется не по воле, а как неизбежное следствие новой конфигурации. Процессы ускоряются. Масштаб влияния растёт геометрически.</p>
-                    <p class="stmt-pair">Это не работа над собой.<br>Это доступ к знанию, которое не подлежит возврату и меняет жизнь, окружение и саму ткань реальности.</p>
-                    <p class="stmt-key">Доступ к квантовому полю — не привилегия.<br>Это точка невозврата.</p>
+                    <p data-i18n="s3p1">The information accessed through the quantum field does not integrate into an existing worldview. It transforms it.</p>
+                    <p class="stmt-triple" data-i18n="s3triple">Time is perceived differently.<br>People and situations are understood differently.<br>Decisions are made from a different level of clarity.</p>
+                    <p data-i18n="s3p2">The environment begins to shift — not by force, but as a natural consequence of a new internal configuration.</p>
+                    <p data-i18n="s3p3">Processes accelerate. The scale of influence expands.</p>
+                    <p class="stmt-pair" data-i18n="s3p4">This is not self-improvement.<br>It is access to knowledge that changes perception, life direction, and the structure through which reality is experienced.</p>
+                    <p class="stmt-key" data-i18n="s3key">Access to the quantum field is not a privilege.<br>It is a <em>point of no return</em>, recognized only after it has been crossed.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="section-bridge fade-in">
+      <p data-i18n="bridgeAfterDepth"></p>
+    </div>
 
     <!-- ══════════════════════════════════════
          СЕКЦИЯ 4: ФОРМАТЫ ВЗАИМОДЕЙСТВИЯ
@@ -95,22 +192,22 @@
     <section class="section section-alt" id="formats">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Форматы взаимодействия</div>
+                <h2 class="section-label" data-i18n="label4">Formats of Interaction</h2>
                 <div class="formats-list">
                     <div class="format-item">
-                        <div class="format-name">Индивидуальное наставничество</div>
-                        <div class="format-desc">Ежемесячное сопровождение с ежедневным доступом к наставнику. Полное погружение в личное поле, сопровождение в процессах трансформации восприятия и перестройки конфигурации жизни.</div>
+                        <h3 class="format-name" data-i18n="format1name">Individual Mentorship</h3>
+                        <div class="format-desc" data-i18n="format1desc">Ongoing monthly guidance with direct access. Deep immersion into your personal field, with support in transforming perception and reconfiguring life structure.</div>
                     </div>
                     <div class="format-item">
-                        <div class="format-name">Закрытые групповые погружения</div>
-                        <div class="format-desc">Работа с коллективным полем, синхронизация участников, углубление понимания вероятных линий развития и точек стратегического выбора.</div>
+                        <h3 class="format-name" data-i18n="format2name">Closed Group Immersions</h3>
+                        <div class="format-desc" data-i18n="format2desc">Work within a shared field. Alignment of participants and deeper awareness of possible trajectories and strategic choices.</div>
                     </div>
                     <div class="format-item">
-                        <div class="format-name">Персональные сессии</div>
-                        <div class="format-desc">Считывание и перевод информации из поля Акаши, работа с квантовыми структурами реальности.</div>
+                        <h3 class="format-name" data-i18n="format3name">Private Sessions</h3>
+                        <div class="format-desc" data-i18n="format3desc">Accessing and translating information from the Akashic field, working with underlying patterns of reality.</div>
                     </div>
                 </div>
-                <p class="formats-note">Доступ предоставляется по рекомендации и зрелости участника.</p>
+                <p class="formats-note" data-i18n="formatsNote">Access is offered based on recommendation and readiness.</p>
             </div>
         </div>
     </section>
@@ -121,36 +218,37 @@
     <section class="section" id="recommendation">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Вход по рекомендации</div>
+                <h2 class="section-label" data-i18n="label5">Access by Recommendation</h2>
                 <div class="prose form-intro">
-                    <p>Взаимодействие возможно только по личной рекомендации.</p>
-                    <p class="stmt-pair">Это не формальность.<br>Рекомендующий подтверждает вашу зрелость и способность принять знание, которое необратимо меняет конфигурацию жизни и восприятия.<br>Ответственность за готовность полностью лежит на вас.</p>
+                    <p data-i18n="s5p1">Interaction takes place through personal recommendation.</p>
+                    <p class="stmt-pair" data-i18n="s5p2">This is not a formality.<br>The person recommending you confirms your readiness for knowledge that reshapes perception and direction.<br>Responsibility for readiness remains yours.</p>
+                    <p data-i18n="s5p3">Recommendations emerge through existing interactions, not by request.</p>
                 </div>
 
                 <form id="access-form" action="https://formspree.io/f/mlgwkkbw" method="POST">
                     <div class="field">
-                        <label for="name">Имя</label>
-                        <input type="text" id="name" name="name" placeholder="Ваше имя" required autocomplete="off">
+                        <label for="name" data-i18n-label="fieldName">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" data-i18n-placeholder="placeholderName" required autocomplete="off">
                     </div>
                     <div class="field">
-                        <label for="contact">Контакт</label>
-                        <input type="text" id="contact" name="contact" placeholder="Telegram, email или телефон" required autocomplete="off">
+                        <label for="contact" data-i18n-label="fieldContact">Contact</label>
+                        <input type="text" id="contact" name="contact" placeholder="Telegram, email, or phone" data-i18n-placeholder="placeholderContact" required autocomplete="off">
                     </div>
                     <div class="field">
-                        <label for="recommender">Имя рекомендующего</label>
-                        <input type="text" id="recommender" name="recommender" placeholder="Кто вас рекомендовал" required autocomplete="off">
+                        <label for="recommender" data-i18n-label="fieldRecommender">Name of referring person</label>
+                        <input type="text" id="recommender" name="recommender" placeholder="Name of the person referring you" data-i18n-placeholder="placeholderRecommender" required autocomplete="off">
                     </div>
                     <div class="field">
-                        <label for="phase">Краткое описание текущей фазы жизни</label>
-                        <textarea id="phase" name="phase" rows="4" placeholder="Чем вы занимаетесь, что привело вас сюда" required></textarea>
+                        <label for="phase" data-i18n-label="fieldPhase">Current phase of life</label>
+                        <textarea id="phase" name="phase" rows="4" placeholder="Where you are now. What brought you here." data-i18n-placeholder="placeholderPhase" required></textarea>
                     </div>
                     <div class="field-submit">
-                        <button type="submit" class="btn-cta">Подать запрос на допуск →</button>
+                        <button type="submit" class="btn-cta" data-i18n="btnSubmit"><em>Request access</em> →</button>
                     </div>
                 </form>
 
                 <div id="form-success" class="form-success" style="display:none;">
-                    <p>Запрос принят.<br>Ответ будет направлен через рекомендующего.</p>
+                    <p data-i18n="formSuccess">Request received.<br>Further interaction depends on alignment and will follow where appropriate.</p>
                 </div>
             </div>
         </div>
@@ -162,13 +260,13 @@
     <section class="section section-alt" id="offering">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Вклад</div>
+                <h2 class="section-label" data-i18n="label6">Contribution</h2>
                 <div class="prose">
-                    <p>Взаимодействие строится на принципе осознанного вклада.</p>
-                    <p class="stmt-pair">Это не оплата услуги.<br>Это энергетический эквивалент принятой ответственности.</p>
-                    <p>Размер вклада отражает глубину запроса и уровень вовлечённости в работу.</p>
-                    <p>Минимальные пороги участия и условия передаются через рекомендующего.</p>
-                    <p class="stmt-key">Финансовые детали — вне этого пространства.</p>
+                    <p data-i18n="s6p1">The interaction is based on the principle of conscious contribution.</p>
+                    <p class="stmt-pair" data-i18n="s6p2">This is not a transactional exchange.<br>It reflects the level of responsibility and depth of engagement in the process.</p>
+                    <p data-i18n="s6p3">The form and level of contribution are communicated through recommendation.</p>
+                    <p class="stmt-key" data-i18n="s6key">Financial details remain outside this space.</p>
+                    <p data-i18n="s6final">Misalignment in contribution reflects as misalignment in process.</p>
                 </div>
             </div>
         </div>
@@ -180,41 +278,41 @@
     <section class="section" id="no-recommendation">
         <div class="container">
             <div class="fade-in">
-                <div class="section-label">Если у вас нет рекомендации</div>
+                <h2 class="section-label" data-i18n="label7">If You Do Not Have a Recommendation</h2>
                 <div class="prose form-intro">
-                    <p>Не каждый приходит через прямую рекомендацию.</p>
-                    <p class="stmt-pair">В отдельных случаях возможно первичное взаимодействие,<br>позволяющее определить готовность и способ дальнейшего допуска.</p>
-                    <p>Это не альтернатива рекомендации.<br>Это предварительная ориентация в процессе.</p>
-                    <p>Опишите текущую фазу, уровень ответственности и причину запроса.</p>
-                    <p class="stmt-key">Если это пространство для вас — вы получите ответ.</p>
-                    <p class="orientation-note">Рекомендации формируются через уже существующие взаимодействия.</p>
+                    <p data-i18n="s7p1">Not everyone arrives through direct referral.</p>
+                    <p class="stmt-pair" data-i18n="s7p2">In certain cases, an initial interaction may take place<br>to understand readiness and the appropriate path forward.</p>
+                    <p data-i18n="s7p3">This is not an alternative to recommendation.<br>It is an initial orientation within the process.</p>
+                    <p data-i18n="s7p4">Describe your current phase, level of responsibility, and the nature of your request.</p>
+                    <p class="stmt-key" data-i18n="s7key">If there is alignment, you will receive a response.</p>
+                    <p class="orientation-note" data-i18n="s7note">Recommendations are formed through already existing interactions.</p>
                 </div>
 
                 <form id="orientation-form" action="https://formspree.io/f/mlgwkkbw" method="POST">
                     <input type="hidden" name="_subject" value="Запрос на ориентацию (без рекомендации)">
                     <div class="field">
-                        <label for="or-name">Имя</label>
-                        <input type="text" id="or-name" name="name" required autocomplete="off" placeholder="Ваше имя">
+                        <label for="or-name" data-i18n-label="fieldName">Name</label>
+                        <input type="text" id="or-name" name="name" required autocomplete="off" placeholder="Your name" data-i18n-placeholder="placeholderName">
                     </div>
                     <div class="field">
-                        <label for="or-contact">Контакт</label>
-                        <input type="text" id="or-contact" name="contact" required autocomplete="off" placeholder="Telegram, email или телефон">
+                        <label for="or-contact" data-i18n-label="fieldContact">Contact</label>
+                        <input type="text" id="or-contact" name="contact" required autocomplete="off" placeholder="Telegram, email, or phone" data-i18n-placeholder="placeholderContact">
                     </div>
                     <div class="field">
-                        <label for="or-scope">Текущая сфера / масштаб ответственности</label>
-                        <input type="text" id="or-scope" name="scope" required autocomplete="off" placeholder="Чем вы занимаетесь, за что несёте ответственность">
+                        <label for="or-scope" data-i18n-label="fieldScope">Sphere / scale of responsibility</label>
+                        <input type="text" id="or-scope" name="scope" required autocomplete="off" placeholder="Your field and the scale of what you hold" data-i18n-placeholder="placeholderScope">
                     </div>
                     <div class="field">
-                        <label for="or-situation">Краткое описание ситуации</label>
-                        <textarea id="or-situation" name="situation" rows="4" required placeholder="Что привело вас сюда. Что происходит в вашей жизни прямо сейчас."></textarea>
+                        <label for="or-situation" data-i18n-label="fieldSituation">Brief description of your situation</label>
+                        <textarea id="or-situation" name="situation" rows="4" required placeholder="What is happening. What brought you to this point." data-i18n-placeholder="placeholderSituation"></textarea>
                     </div>
                     <div class="field-submit">
-                        <button type="submit" class="btn-orientation">Отправить запрос →</button>
+                        <button type="submit" class="btn-orientation" data-i18n="btnOrientation">Submit request →</button>
                     </div>
                 </form>
 
                 <div id="orientation-success" class="form-success" style="display:none;">
-                    <p>Запрос получен.<br>Если это пространство для вас — ответ придёт.</p>
+                    <p data-i18n="orientationSuccess">Your request has been received.<br>If there is alignment, you will hear back.</p>
                 </div>
             </div>
         </div>
@@ -225,13 +323,20 @@
     ══════════════════════════════════════ -->
     <section id="final">
         <div class="final-inner fade-in">
-            <p class="final-title">Трансформация неизбежна.</p>
-            <p class="final-sub">Вопрос только в том —<br>готовы ли вы принять её осознанно.</p>
-            <p class="final-note">Знание уже здесь.<br>Допуск — по запросу.</p>
-            <a href="#recommendation" class="btn-cta">Подать запрос на допуск →</a>
+            <p class="final-title" data-i18n="finalTitle">Transformation is inevitable.</p>
+            <p class="final-sub" data-i18n="finalSub">The only question is —<br>whether it is conscious.</p>
+            <p class="final-extra" data-i18n="finalExtra">Not everyone recognizes the moment when it begins.</p>
+            <p class="final-note" data-i18n="finalNote">The knowledge is already present.<br>Access begins with a request.</p>
+            <p class="final-signal fade-in" data-i18n="finalSignal"></p>
+            <a href="#recommendation" class="btn-cta" data-i18n="finalCta">Request access →</a>
         </div>
     </section>
 
+    <div class="authority-signal">
+      <p data-i18n="authorityLine1">Interaction occurs within a limited field of attention.</p>
+      <p data-i18n="authorityLine2">The number of active processes at any given time remains intentionally restricted.</p>
+    </div>
     <script src="main.js"></script>
+    <script src="i18n.js"></script>
 </body>
 </html>
