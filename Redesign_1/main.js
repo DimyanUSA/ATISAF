@@ -91,182 +91,170 @@
 })();
 
 
-/* ── FORM HANDLING (Formspree AJAX) ─────────────────────────── */
-(function () {
-    const form    = document.getElementById('access-form');
-    const success = document.getElementById('form-success');
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const btn = form.querySelector('button[type="submit"]');
-        const original = btn.textContent;
-        btn.textContent = '...';
-        btn.disabled = true;
-
-        try {
-            const res = await fetch(form.action, {
-                method:  'POST',
-                body:    new FormData(form),
-                headers: { 'Accept': 'application/json' },
-            });
-
-            if (res.ok) {
-                setTimeout(() => {
-                    form.style.display    = 'none';
-                    success.style.display = 'block';
-                }, 1800);
-            } else {
-                throw new Error('server error');
-            }
-        } catch {
-            btn.textContent = original;
-            btn.disabled    = false;
-            alert('Произошла ошибка при отправке. Попробуйте ещё раз.');
-        }
-    });
-})();
-
-
-/* ── ORIENTATION FORM HANDLING ─────────────────────────────── */
-(function () {
-    const orientationForm = document.getElementById('orientation-form');
-    const orientationSuccess = document.getElementById('orientation-success');
-    if (!orientationForm) return;
-
-    orientationForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const btn = orientationForm.querySelector('button[type="submit"]');
-        const original = btn.textContent;
-        btn.textContent = '...';
-        btn.disabled = true;
-
-        try {
-            const res = await fetch(orientationForm.action, {
-                method:  'POST',
-                body:    new FormData(orientationForm),
-                headers: { 'Accept': 'application/json' },
-            });
-
-            if (res.ok) {
-                setTimeout(() => {
-                    orientationForm.style.display    = 'none';
-                    orientationSuccess.style.display = 'block';
-                }, 1800);
-            } else {
-                throw new Error('server error');
-            }
-        } catch {
-            btn.textContent = original;
-            btn.disabled    = false;
-            alert('Произошла ошибка при отправке. Попробуйте ещё раз.');
-        }
-    });
-})();
-
-
-/* ── ORIENTATION TOGGLE ──────────────────────────────────────── */
-(function () {
-    const orientToggle = document.querySelector('.orientation-toggle');
-    const orientBlock  = document.querySelector('.orientation-block');
-    const deeperToggle = document.querySelector('.orientation-deeper-toggle');
-    const deeperBlock  = document.querySelector('.orientation-deeper');
-
-    if (orientToggle) {
-        orientToggle.addEventListener('click', () => {
-            orientBlock.classList.toggle('open');
-        });
-    }
-
-    if (deeperToggle) {
-        deeperToggle.addEventListener('click', () => {
-            deeperBlock.classList.toggle('open');
-        });
-    }
-})();
-
-
-// ── Behavioural UX Logic ──────────────────────────
+/* ── SCORING + BEHAVIOURAL UX + FORMS + TOGGLES ────────────── */
 (function() {
   const isRU = () => (localStorage.getItem('atisaf-lang') || 'en') === 'ru';
 
-  const messages = {
-    en: {
-      deeper: "If you've reached this layer, you already understand more than most.",
-      time60: "Not everything here is meant to be understood immediately.",
-      time90: "At this point, most already know whether they are ready.",
-      scroll: "If you are still here — the decision has already been made."
-    },
-    ru: {
-      deeper: "Если вы дошли до этого уровня — вы уже понимаете больше, чем большинство.",
-      time60: "Не всё здесь предназначено для немедленного понимания.",
-      time90: "В этой точке большинство уже знают — готовы они или нет.",
-      scroll: "Если вы всё ещё здесь — решение уже принято."
+  // ── Scoring system ──────────────────────────────
+  let score = parseInt(localStorage.getItem('atisaf-score') || '0');
+  let messageShown = false;
+  let scrollScored = { forWhom: false, depth: false, bottom: false };
+  let slowScrollScore = 0;
+  let lastScrollTime = 0;
+
+  // Return visitor
+  if (localStorage.getItem('atisaf-visited')) {
+    score += 5;
+  }
+  localStorage.setItem('atisaf-visited', 'true');
+
+  // Time-based scoring
+  setTimeout(() => { score += 2; localStorage.setItem('atisaf-score', score); }, 60000);
+  setTimeout(() => { score += 3; localStorage.setItem('atisaf-score', score); }, 120000);
+
+  // Scroll-based scoring
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const now = Date.now();
+
+    // Slow reading detection
+    if (now - lastScrollTime > 800 && lastScrollTime > 0) {
+      if (slowScrollScore < 4) { score += 1; slowScrollScore++; }
     }
+    lastScrollTime = now;
+
+    // Section reach scoring
+    const forWhomEl = document.getElementById('for-whom');
+    const depthEl = document.getElementById('depth');
+
+    if (!scrollScored.forWhom && forWhomEl && scrollY > forWhomEl.offsetTop - 200) {
+      score += 3; scrollScored.forWhom = true;
+    }
+    if (!scrollScored.depth && depthEl && scrollY > depthEl.offsetTop - 200) {
+      score += 4; scrollScored.depth = true;
+    }
+    if (!scrollScored.bottom && (window.innerHeight + scrollY) >= document.body.offsetHeight - 150) {
+      scrollScored.bottom = true;
+      const lang = isRU() ? 'ru' : 'en';
+      const msg = lang === 'ru'
+        ? 'Если вы всё ещё здесь — решение уже принято.'
+        : 'If you are still here — the decision has already been made.';
+      setTimeout(() => showUXMessage(msg, true), 500);
+    }
+
+    localStorage.setItem('atisaf-score', score);
+  });
+
+  // Orientation toggle scoring
+  const orientToggle = document.querySelector('.orientation-toggle');
+  const orientBlock = document.querySelector('.orientation-block');
+  if (orientToggle) {
+    orientToggle.addEventListener('click', () => {
+      orientBlock.classList.toggle('open');
+      score += 3;
+      localStorage.setItem('atisaf-score', score);
+    });
+  }
+
+  // Deeper layer scoring + trigger
+  const deeperToggle = document.querySelector('.orientation-deeper-toggle');
+  const deeperBlock = document.querySelector('.orientation-deeper');
+  if (deeperToggle) {
+    deeperToggle.addEventListener('click', () => {
+      deeperBlock.classList.toggle('open');
+      score += 6;
+      localStorage.setItem('atisaf-score', score);
+      const lang = isRU() ? 'ru' : 'en';
+      const msg = lang === 'ru'
+        ? 'Если вы дошли до этого уровня — вы уже понимаете больше, чем большинство.'
+        : "If you've reached this layer, you already understand more than most.";
+      setTimeout(() => showUXMessage(msg, true), 2000);
+    });
+  }
+
+  // Score-based messaging (checked every 10s)
+  const getText = (level) => {
+    const lang = isRU() ? 'ru' : 'en';
+    const texts = {
+      ru: {
+        low:  'Не всё здесь должно быть понятно сразу.',
+        mid:  'Иногда распознавание происходит раньше понимания.',
+        high: 'Вы уже понимаете, зачем вы здесь.'
+      },
+      en: {
+        low:  'Not everything here is meant to be understood immediately.',
+        mid:  'Recognition often precedes understanding.',
+        high: 'You already know why you are here.'
+      }
+    };
+    return texts[lang][level];
   };
 
-  let startTime = Date.now();
-  let openedDeeper = false;
-  let messageShown = false;
-  let scrollMessageShown = false;
+  setInterval(() => {
+    if (messageShown) return;
+    if (score >= 21) {
+      showUXMessage(getText('high'), true);
+      messageShown = true;
+    } else if (score >= 13) {
+      showUXMessage(getText('mid'), false);
+      messageShown = true;
+    } else if (score >= 6) {
+      showUXMessage(getText('low'), false);
+      messageShown = true;
+    }
+  }, 10000);
 
+  // ── UX Message display ───────────────────────────
   function showUXMessage(text, withCTA) {
     if (document.querySelector('.ux-message')) return;
     const lang = isRU() ? 'ru' : 'en';
+    const ctaText = lang === 'ru' ? '→ Запросить допуск' : '→ Request access';
     const box = document.createElement('div');
     box.className = 'ux-message';
-    box.innerHTML = `<p>${text}</p>${withCTA ? `<a href="#recommendation">${lang === 'ru' ? '→ Запросить допуск' : '→ Request access'}</a>` : ''}`;
+    box.innerHTML = `<p>${text}</p>${withCTA ? `<a href="#recommendation">${ctaText}</a>` : ''}`;
     document.body.appendChild(box);
     setTimeout(() => box.classList.add('visible'), 100);
     setTimeout(() => {
       box.classList.remove('visible');
       setTimeout(() => box.remove(), 600);
-    }, 6000);
+    }, 7000);
   }
 
-  // Deeper layer trigger
-  const deeperBtn = document.querySelector('.orientation-deeper-toggle');
-  if (deeperBtn) {
-    deeperBtn.addEventListener('click', () => {
-      openedDeeper = true;
-      const lang = isRU() ? 'ru' : 'en';
-      setTimeout(() => showUXMessage(messages[lang].deeper, true), 2000);
+  // ── Form delays ──────────────────────────────────
+  const accessForm = document.getElementById('access-form');
+  const formSuccess = document.getElementById('form-success');
+  if (accessForm) {
+    accessForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(accessForm);
+      const res = await fetch(accessForm.action, {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        setTimeout(() => {
+          accessForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+        }, 1800);
+      }
     });
   }
 
-  // Time-based triggers
-  const timeCheck = setInterval(() => {
-    if (messageShown) { clearInterval(timeCheck); return; }
-    const elapsed = (Date.now() - startTime) / 1000;
-    const lang = isRU() ? 'ru' : 'en';
-    if (elapsed > 90 && !openedDeeper) {
-      showUXMessage(messages[lang].time90, false);
-      messageShown = true;
-    } else if (elapsed > 60 && !openedDeeper) {
-      showUXMessage(messages[lang].time60, false);
-      messageShown = true;
-    }
-  }, 5000);
-
-  // Scroll to bottom trigger
-  window.addEventListener('scroll', () => {
-    if (scrollMessageShown) return;
-    const scrolled = window.innerHeight + window.scrollY;
-    const total = document.body.offsetHeight;
-    if (scrolled >= total - 150) {
-      scrollMessageShown = true;
-      const lang = isRU() ? 'ru' : 'en';
-      setTimeout(() => showUXMessage(messages[lang].scroll, true), 500);
-    }
-  });
-
-  // Return visitor
-  if (localStorage.getItem('atisaf-visited')) {
-    const lang = isRU() ? 'ru' : 'en';
-    const returnMsg = lang === 'ru' ? 'Вы уже были здесь.' : 'You have been here before.';
-    setTimeout(() => showUXMessage(returnMsg, false), 3000);
+  const orientationForm = document.getElementById('orientation-form');
+  const orientationSuccess = document.getElementById('orientation-success');
+  if (orientationForm) {
+    orientationForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(orientationForm);
+      const res = await fetch(orientationForm.action, {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        setTimeout(() => {
+          orientationForm.style.display = 'none';
+          orientationSuccess.style.display = 'block';
+        }, 1800);
+      }
+    });
   }
-  localStorage.setItem('atisaf-visited', 'true');
+
 })();
