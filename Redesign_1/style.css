@@ -584,3 +584,66 @@ button.btn-cta {
     margin: 18px 0;
     letter-spacing: 0.02em;
 }
+
+/* ══════════════════════════════════════════════
+   MICRO-BRIDGES & SILENT CTAs
+══════════════════════════════════════════════ */
+.section-bridge {
+    text-align: center;
+    padding: 20px 24px 0;
+}
+
+.section-bridge p {
+    color: rgba(255,255,255,0.22);
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.silent-cta {
+    text-align: center;
+    padding: 40px 0 0;
+}
+
+.silent-cta a,
+.deeper-cta a {
+    color: rgba(255,255,255,0.2);
+    text-decoration: none;
+    font-size: 0.72em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.silent-cta a:hover,
+.deeper-cta a:hover {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.deeper-cta {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.deeper-cta p {
+    color: rgba(255,255,255,0.25);
+    font-size: 0.82em;
+    font-style: italic;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+    line-height: 1.8;
+}
+
+.final-signal {
+    color: rgba(255,255,255,0.25);
+    font-size: 0.82em;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+}
