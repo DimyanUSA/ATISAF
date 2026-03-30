@@ -698,3 +698,9 @@ button.btn-cta {
         bottom: 20px;
     }
 }
+
+.logo-mark {
+  display: block;
+  margin: 0 auto 8px;
+  opacity: 0.9;
+}
