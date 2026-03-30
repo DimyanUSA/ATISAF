@@ -704,3 +704,18 @@ button.btn-cta {
   margin: 0 auto 8px;
   opacity: 0.9;
 }
+
+.logo-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -200px);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.logo-seal {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
