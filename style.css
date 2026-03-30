@@ -128,9 +128,15 @@ body {
 }
 
 .hero-inner {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     z-index: 1;
-    max-width: 640px;
     padding: 80px 40px;
 }
 
